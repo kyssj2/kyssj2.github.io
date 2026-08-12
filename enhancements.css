@@ -1,0 +1,172 @@
+/* ChoixTech — progressive UX enhancements */
+.search-shortcut {
+  appearance: none;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+}
+
+body.search-open { overflow: hidden; }
+
+.search-dialog {
+  width: min(760px, calc(100% - 32px));
+  max-height: min(760px, calc(100dvh - 48px));
+  padding: 0;
+  border: 0;
+  border-radius: 22px;
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 30px 90px rgba(18, 33, 27, .28);
+}
+
+.search-dialog::backdrop {
+  background: rgba(18, 33, 27, .58);
+  backdrop-filter: blur(7px);
+}
+
+.search-panel { padding: 26px; }
+.search-panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+.search-panel-header h2 {
+  margin: 3px 0 0;
+  font-size: clamp(1.8rem, 5vw, 2.55rem);
+  line-height: 1.05;
+}
+.search-close {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1;
+}
+.search-close:hover { background: var(--mint); border-color: var(--green); }
+
+.search-field-wrap { position: relative; }
+.search-field-wrap::before {
+  position: absolute;
+  top: 50%;
+  left: 19px;
+  width: 15px;
+  height: 15px;
+  border: 2px solid var(--green);
+  border-radius: 50%;
+  content: "";
+  transform: translateY(-57%);
+  pointer-events: none;
+}
+.search-field-wrap::after {
+  position: absolute;
+  top: 50%;
+  left: 33px;
+  width: 8px;
+  height: 2px;
+  border-radius: 99px;
+  background: var(--green);
+  content: "";
+  transform: translateY(6px) rotate(45deg);
+  pointer-events: none;
+}
+.search-field {
+  width: 100%;
+  min-height: 58px;
+  padding: 15px 18px 15px 52px;
+  border: 1px solid #b9c9bf;
+  border-radius: 12px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.05rem;
+}
+.search-field:focus { border-color: var(--green); outline: 3px solid rgba(11, 107, 77, .14); }
+.search-help { margin: 10px 2px 0; color: var(--muted); font-size: .82rem; }
+
+.search-results {
+  display: grid;
+  gap: 10px;
+  max-height: 440px;
+  margin-top: 20px;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.search-result {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 20px;
+  padding: 16px 17px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+  transition: .18s ease;
+}
+.search-result:hover,
+.search-result:focus-visible {
+  border-color: var(--green);
+  background: var(--mint);
+  transform: translateY(-1px);
+}
+.search-result strong { display: block; margin-bottom: 3px; font-size: 1rem; }
+.search-result small { color: var(--muted); }
+.search-result-arrow { color: var(--green); font-size: 1.35rem; font-weight: 900; }
+.search-empty {
+  padding: 25px;
+  border: 1px dashed #b9c9bf;
+  border-radius: 12px;
+  background: var(--paper);
+  color: var(--muted);
+  text-align: center;
+}
+
+.hero-proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin: 24px 0 0;
+  padding: 0;
+  color: var(--muted);
+  font-size: .86rem;
+  list-style: none;
+}
+.hero-proof li { display: inline-flex; align-items: center; gap: 7px; }
+.hero-proof li::before {
+  display: grid;
+  width: 18px;
+  height: 18px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--mint);
+  color: var(--green);
+  content: "✓";
+  font-size: .7rem;
+  font-weight: 900;
+}
+
+.article-card-link:focus-visible,
+.category-card:focus-visible,
+.button:focus-visible { outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+@media (max-width: 700px) {
+  .search-dialog { width: calc(100% - 20px); max-height: calc(100dvh - 20px); border-radius: 16px; }
+  .search-panel { padding: 20px; }
+  .search-panel-header { gap: 12px; }
+  .search-result { grid-template-columns: 1fr auto; padding: 14px; }
+  .hero-proof { margin-top: 20px; }
+}
